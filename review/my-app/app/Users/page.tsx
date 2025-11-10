@@ -7,7 +7,9 @@ interface User {
 
 
 const UserPage = async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+    const res = await fetch('https://jsonplaceholder.typicode.com/users',
+        { cache: 'no-store' }
+    );
     const users: User[] = await res.json();
     return (
         // <>
@@ -18,6 +20,7 @@ const UserPage = async () => {
         // </>
         <div className='p-6'>
             <h1 className='text-xl font-bold mb-4'>Table of Users</h1>
+            <p>{new Date().toLocaleTimeString()}</p>
             <table className='min-w-full border border-gray-300'>
                 <thead className='bg-gray-100 text-black'>
                     <tr>
